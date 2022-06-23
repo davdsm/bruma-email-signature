@@ -1,70 +1,4 @@
-"use strict";
 
-var fs = require('fs');
-const { exit } = require('process');
-
-const doIt = async () => {
-
-    const readline = require('readline').createInterface({
-        input: process.stdin,
-        output: process.stdout,
-    });
-
-    var name, position, email, contact1, contact2 = false;
-
-
-    await new Promise(
-        (resolve, reject) => {
-            readline.question(`Nome - `, _name => {
-                name = _name
-                resolve()
-            });
-        }
-    )
-
-    await new Promise(
-        (resolve, reject) => {
-            readline.question(`Posição - `, _pos => {
-                position = _pos
-                resolve();
-            });
-        }
-    )
-
-    await new Promise(
-        (resolve, reject) => {
-            readline.question(`Email - `, _email => {
-                email = _email
-                resolve();
-            });
-        }
-    )
-
-    await new Promise(
-        (resolve, reject) => {
-            readline.question(`Contacto 1 - (com espaços e indicativo) (ex: +351 918 659 324) - `, _contact => {
-                contact1 = _contact
-                resolve();
-            });
-        }
-    )
-
-    await new Promise(
-        (resolve, reject) => {
-            readline.question(`Contacto 2 - (com espaços e indicativo) (ex: +351 918 659 324) - `, _contact => {
-                contact2 = _contact
-                resolve();
-            });
-        }
-    )
-
-
-    var slug = name.trim();
-
-    await new Promise(
-        (resolve, reject) => {
-            fs.writeFile(`${slug}.html`, `
-      
 
         <!doctype html>
         <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -182,22 +116,22 @@ const doIt = async () => {
                                 <tbody>
                                     <tr>
                                     <td align="left" style="font-size:0px;padding:10px 25px;padding-bottom:0;word-break:break-word;">
-                                        <div style="font-family:Georgia Bold;font-size:17px;font-weight:400;line-height:24px;text-align:left;color:#002e6b;"><strong>${name}</strong></div>
+                                        <div style="font-family:Georgia Bold;font-size:17px;font-weight:400;line-height:24px;text-align:left;color:#002e6b;"><strong>Adriana Ramos</strong></div>
                                     </td>
                                     </tr>
                                     <tr>
                                     <td align="left" style="font-size:0px;padding:10px 25px;padding-top:0;padding-bottom:0;word-break:break-word;">
-                                        <div style="font-family:'Arial Neue', Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;line-height:24px;text-align:left;color:#002e6b;">${position}</div>
+                                        <div style="font-family:'Arial Neue', Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;line-height:24px;text-align:left;color:#002e6b;">Qualidade</div>
                                     </td>
                                     </tr>
                                     <tr>
                                     <td align="left" style="font-size:0px;padding:10px 25px;padding-bottom:0;word-break:break-word;">
-                                    <div style="font-family:'Arial Neue', Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;line-height:24px;text-align:left;color:#002e6b;"><a class="text-link" href="mailto:${email}" style="color: #002e6b; text-decoration: none; font-size: 15px;">${email}</a></div>
+                                        <div style="font-family:'Arial Neue', Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;line-height:24px;text-align:left;color:#002e6b;"><a class="text-link" href="mailto:qualidade3@bruma.pt" style="color: #002e6b; text-decoration: none; font-size: 15px;">qualidade3@bruma.pt</a></div>
                                     </td>
                                     </tr>
                                     <tr>
                                         <td align="left" style="font-size:0px;padding:10px 25px;padding-top:0;padding-bottom:0;word-break:break-word;">
-                                        <div style="font-family:'Arial Neue', Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;line-height:24px;text-align:left;color:#002e6b;"><a class="text-link" href="tel:${contact1.trim()}" style="color: #002e6b; text-decoration: none; font-size: 15px;">${contact1} ${contact2 ? `- <a class="text-link" href="tel:${contact2.trim()}" style="color: #002e6b; text-decoration: none; font-size: 15px;">${contact2}</a>` : `</a>`}</div>
+                                            <div style="font-family:'Arial Neue', Helvetica, Arial, sans-serif;font-size:14px;font-weight:400;line-height:24px;text-align:left;color:#002e6b;"><a class="text-link" href="tel:+351 252 312 565" style="color: #002e6b; text-decoration: none; font-size: 15px;">+351 252 312 565 </a></div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -307,18 +241,3 @@ const doIt = async () => {
         </body>
 
         </html>
-
-
-
-
-
-
-`, () => { console.log("✅ Done"), resolve() })
-
-        })
-
-    process.exit();
-
-}
-
-doIt()
